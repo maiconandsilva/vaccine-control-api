@@ -1,0 +1,22 @@
+version: "3.0"
+
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: $DB_DATABASE
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASS
+
+  app:
+    image: node
+    restart: unless-stopped
+    working_dir: /app
+    command: yarn run $NPM_COMMAND
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+    profiles:
+      - frontend
