@@ -1,6 +1,6 @@
 const User = require("./user");
 const Vaccine = require("./vaccine");
-const VaccinationRegistry = require("./vaccination-registry");
+const VaccinationRecord = require("./vaccination-record");
 const db = require("../database/sequelize")
 
 const env = process.env;
@@ -16,6 +16,6 @@ function sync() {
 module.exports = {
     User,
     Vaccine,
-    VaccinationRegistry,
+    VaccinationRecord,
     sync,
 };

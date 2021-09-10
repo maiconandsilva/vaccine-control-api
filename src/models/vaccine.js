@@ -1,8 +1,24 @@
-const db = require("../database/sequelize");
-const {DataTypes} = require("sequelize");
+const sequelize = require("../database/sequelize");
+const {DataTypes, Model} = require("sequelize");
 
-module.exports = db.define(
-"Vaccine", {
-    name: { type: DataTypes.STRING, allowNull: false },
-    manufacturer: { type: DataTypes.STRING, allowNull: false }
+class Vaccine extends Model {
+
+}
+
+Vaccine.init({
+    name: { type: DataTypes.STRING, allowNull: false,
+        validate: {
+            notEmpty: true,
+        },
+    },
+    manufacturer: {
+        type: DataTypes.STRING, allowNull: false,
+        validate: {
+            notEmpty: true,
+        },
+    }
+}, {
+    sequelize,
 });
+
+module.exports = Vaccine;
