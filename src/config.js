@@ -1,5 +1,7 @@
-const dotenv = require("dotenv"); dotenv.config(); //! First import. Don't change this
-const models = require("./models");
-const db = require("./database/sequelize");
-
-models.sync();
+module.exports = {
+    tokenSettings: {
+        privateKey: process.env.TOKEN_PRIVATE_KEY,
+        publicKey: process.env.TOKEN_PUBLIC_KEY,
+        tokenExpiration: process.env.TOKEN_EXPIRATION,
+    }
+}
