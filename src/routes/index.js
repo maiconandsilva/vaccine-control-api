@@ -5,7 +5,7 @@ const account = require("./account");
 const users = require("./users");
 const vaccination = require("./vaccination-record");
 const vaccine = require("./vaccine");
-const {authMiddleware} = require("../middlewares");
+const {errorsController} = require("../controllers");
 
 const app = express();
 
@@ -23,7 +23,7 @@ api.use("/vaccination", vaccination);
 api.use("/vaccine", vaccine);
 
 // Register root middlewares
-// api.use(authMiddleware.requireAuthentication, authMiddleware.loadUserFromToken);
-// Register error routes
 
+// Register root error routes
+app.use(errorsController.handleErrors)
 module.exports = app;

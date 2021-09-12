@@ -4,6 +4,13 @@ function validate(condition, message) {
     }
 }
 
+function assert(condition, message) {
+    if (!condition) {
+        throw new Error(message);
+    }
+}
+
 module.exports = {
-  validate,
+    validate,
+    assert,
 };
