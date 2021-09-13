@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-09-14T14:25:59.309Z
+__export_date: 2021-09-14T15:44:41.563Z
 __export_source: insomnia.desktop.app:v2021.5.3
 resources:
   - _id: req_46d4658ae621498cb076c5c83b90f82e
@@ -491,4 +491,22 @@ resources:
     color: null
     isPrivate: false
     metaSortKey: 1631556498594
+    _type: environment
+  - _id: env_6bf5545c2a8e49818f83da64b3b0e547
+    parentId: env_c9536585202618e02b39a8b43d6e867abae97531
+    modified: 1631633992223
+    created: 1631630413533
+    name: prod
+    data:
+      url: https://vaccine-control-api.herokuapp.com
+      apiUrl: "{{ _.url }}/api"
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViMWI3YmU5LTZmMDYtNDQxNC05NWNmLWNmN2IzOGIwNzY1NyIsImlhdCI6MTYzMTYzMzk3OCwiZXhwIjoxNjMxNzIwMzc4fQ.5d4sW1xcWLNcJ2aZF3upyPuTIao4Fzsx6mbjLA2aAIE
+    dataPropertyOrder:
+      "&":
+        - url
+        - apiUrl
+        - token
+    color: null
+    isPrivate: false
+    metaSortKey: 1631630413533
     _type: environment
