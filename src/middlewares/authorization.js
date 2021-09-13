@@ -1,4 +1,5 @@
 const models = require("../models");
+const {validate} = require("../utils/validation");
 const {responseHandler} = require("../utils");
 const {jwtToken} = require("../utils");
 
@@ -21,6 +22,11 @@ class AuthMiddleware {
         const {id} = response.locals.userToken;
         if (id) {
             response.locals.user = await models.User.findByPk(id);
+        }
+        if (!response.locals.user) {
+            return responseHandler.handleError(request, response, {
+                message: "Couldn't find user for token",
+            }, {status: 404});
         }
         next();
     }
