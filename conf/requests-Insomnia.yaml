@@ -1,0 +1,494 @@
+_type: export
+__export_format: 4
+__export_date: 2021-09-14T14:25:59.309Z
+__export_source: insomnia.desktop.app:v2021.5.3
+resources:
+  - _id: req_46d4658ae621498cb076c5c83b90f82e
+    parentId: fld_3b79d01e923e4ceea06af236082e4efa
+    modified: 1631594141203
+    created: 1631588385212
+    url: "{{ _.apiUrl }}/vaccination/"
+    name: get all
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631591547962
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3b79d01e923e4ceea06af236082e4efa
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631587877892
+    created: 1631587877892
+    name: vaccination registry
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631587877892
+    _type: request_group
+  - _id: wrk_b03217bcfd614daea4e598701d01c84c
+    parentId: null
+    modified: 1631530711943
+    created: 1631530711943
+    name: Vaccination Control
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_54f1dd62248e4fc5b1e726e9b624248f
+    parentId: fld_3b79d01e923e4ceea06af236082e4efa
+    modified: 1631626828090
+    created: 1631589496911
+    url: "{{ _.apiUrl }}/vaccination/"
+    name: register
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"lot": "982489712028784",
+        	"date": "{% now 'custom', 'YYYY-MM-DD' %}",
+        	"vaccineId": 3
+        } 
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_dc50e54456ec46c3af4465f69aecb7b1
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631591547937
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d42d69ec766e4067bcf857fc109f4564
+    parentId: fld_3b79d01e923e4ceea06af236082e4efa
+    modified: 1631627441388
+    created: 1631591547912
+    url: "{{ _.apiUrl }}/vaccination/3"
+    name: update
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"lot": "982489712028784",
+        	"date": "2021-09-13",
+        	"vaccineId": 4,
+        	"userId": "c05f47af-0617-4148-a624-9f6de9147f2e",
+        	"createdAt": "2021-09-14T13:40:29.662Z",
+        	"updatedAt": "2021-09-14T13:40:29.662Z"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_dd09eeb377984fa09ae1df5b5d4aaab3
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631591547912
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2c8982a5ba60488280c10b376780d2d7
+    parentId: fld_3b79d01e923e4ceea06af236082e4efa
+    modified: 1631594136232
+    created: 1631594132916
+    url: "{{ _.apiUrl }}/vaccine/1/delete"
+    name: delete
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631573331086.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_18f0292423c44402bfc0e123cc78fd52
+    parentId: fld_95ad504d2d4548bdab83e02c7dfe60de
+    modified: 1631625846333
+    created: 1631576761948
+    url: "{{ _.apiUrl }}/vaccine/"
+    name: get all
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631573982341.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_95ad504d2d4548bdab83e02c7dfe60de
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631576752986
+    created: 1631576752986
+    name: vaccines
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631576752986
+    _type: request_group
+  - _id: req_5d526b3879c74f5a9dfda6ff4cedfc1f
+    parentId: fld_95ad504d2d4548bdab83e02c7dfe60de
+    modified: 1631627005668
+    created: 1631576828490
+    url: "{{ _.apiUrl }}/vaccine/"
+    name: create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "AstraZeneca",
+        	"manufacturer": "AstraZeneca"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_dc50e54456ec46c3af4465f69aecb7b1
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631572679780.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5ba3ba08f47f4e658157add20185a3cc
+    parentId: fld_95ad504d2d4548bdab83e02c7dfe60de
+    modified: 1631626657605
+    created: 1631579800386
+    url: "{{ _.apiUrl }}/vaccine/3"
+    name: update
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "AstraZeneca",
+        	"manufacturer": "AstraZeneca - Factory 1"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_dc50e54456ec46c3af4465f69aecb7b1
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631572028500.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e6e6686ca972435794a63bf97e8c72cc
+    parentId: fld_95ad504d2d4548bdab83e02c7dfe60de
+    modified: 1631626642058
+    created: 1631593455823
+    url: "{{ _.apiUrl }}/vaccine/2/delete"
+    name: delete
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631572028450.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_dde4aac244eb4c80bf0bd6e6669d1df0
+    parentId: fld_d5fcabd0af8743ea8d9ea95b969a7c16
+    modified: 1631589767268
+    created: 1631576587463
+    url: "{{ _.apiUrl }}/users/"
+    name: get all
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631576587463
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d5fcabd0af8743ea8d9ea95b969a7c16
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631576393003
+    created: 1631576359342
+    name: users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631576359442
+    _type: request_group
+  - _id: req_25e949642fd44889a167f21cebc0ded1
+    parentId: fld_d5fcabd0af8743ea8d9ea95b969a7c16
+    modified: 1631626684893
+    created: 1631574695583
+    url: "{{ _.apiUrl }}/users/update"
+    name: update
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "users": [
+            {
+              "id": "93b92f30-2372-40d7-a3f1-c761d5146e5a",
+              "email": "test1@test.br",
+              "type": "user"
+            },
+            {
+              "id": "8adaa717-6f18-4972-b1a7-5a1a3bb09f84",
+              "email": "test10@test.br",
+              "type": "admin"
+            },
+            {
+              "id": "b5d53a3d-b5ef-4809-bf1e-4445b6c71e36",
+              "email": "test50@test.br",
+              "type": "admin"
+            },
+            {
+              "id": "24f95b15-ad0e-4e0c-a917-a9ed89ea930c",
+              "email": "test11@test.br",
+              "type": "user"
+            },
+            {
+              "id": "c05f47af-0617-4148-a624-9f6de9147f2e",
+              "email": "test@test.br",
+              "type": "admin"
+            }
+          ]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b4b198e99f0b4461aa404a70fe7be076
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631571377220
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9fb0646057614a13b630e81d64d48d05
+    parentId: fld_e57193644f544b228d7282466d89ad7c
+    modified: 1631622960875
+    created: 1631576374372
+    url: "{{ _.apiUrl }}/account/update"
+    name: update
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "testOK@test.br",
+        	"password": "T&st4p1V4c1n@CASD"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b4b198e99f0b4461aa404a70fe7be076
+    authentication:
+      type: bearer
+      token: "{{ _.token }}"
+    metaSortKey: -1631567175193.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_e57193644f544b228d7282466d89ad7c
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631574582236
+    created: 1631556430553
+    name: account
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631556430554
+    _type: request_group
+  - _id: req_d2b3c5db9c7d453ebb5014471f56be45
+    parentId: fld_e57193644f544b228d7282466d89ad7c
+    modified: 1631626711252
+    created: 1631559654803
+    url: "{{ _.apiUrl }}/account/signup"
+    name: sign up
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "test@test.br",
+        	"password": "T&st4p1V4c1n@CASD"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_676ebf17b9ca44dda5e3b8f7c8b4f3a4
+    authentication: {}
+    metaSortKey: -1631559654804
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_20e59ae34bb84e6793cd9d2f8d52cd52
+    parentId: fld_e57193644f544b228d7282466d89ad7c
+    modified: 1631622903754
+    created: 1631556438141
+    url: "{{ _.apiUrl }}/account/authenticate"
+    name: authenticate
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "test@test.br",
+        	"password": "T&st4p1V4c1n@CASD"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_50eb2eca286545e5855dac6219024f78
+    authentication: {}
+    metaSortKey: -1631556438141
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_c9536585202618e02b39a8b43d6e867abae97531
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631530711948
+    created: 1631530711948
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1631530711948
+    _type: environment
+  - _id: jar_c9536585202618e02b39a8b43d6e867abae97531
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631530711950
+    created: 1631530711950
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_3554c34db5a54d3fbd3c791579546789
+    parentId: wrk_b03217bcfd614daea4e598701d01c84c
+    modified: 1631530711944
+    created: 1631530711944
+    fileName: Vaccination Control
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: env_82816c4427cc46fe96037ffc7dbe3e11
+    parentId: env_c9536585202618e02b39a8b43d6e867abae97531
+    modified: 1631622533078
+    created: 1631556498594
+    name: dev
+    data:
+      url: localhost:5005
+      apiUrl: "{{ _.url }}/api"
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMwNWY0N2FmLTA2MTctNDE0OC1hNjI0LTlmNmRlOTE0N2YyZSIsImlhdCI6MTYzMTYyMjUxMiwiZXhwIjoxNjMxNzA4OTEyfQ.-F-DX13oV9qne-IETYGuHKkUAHpFJnvPFHaWfuOB1jU
+    dataPropertyOrder:
+      "&":
+        - url
+        - apiUrl
+        - token
+    color: null
+    isPrivate: false
+    metaSortKey: 1631556498594
+    _type: environment
