@@ -25,5 +25,5 @@ api.use("/vaccine", vaccine);
 // Register root middlewares
 
 // Register root error routes
-app.use(errorsController.handleErrors)
+// app.use(errorsController.handleErrors);
 module.exports = app;
