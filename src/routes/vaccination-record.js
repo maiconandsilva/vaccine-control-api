@@ -1,12 +1,12 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/authorization");
-const {vaccinationController} = require("../controllers");
+const { vaccinationController } = require("../controllers");
 
 const vaccinationRouter = express.Router();
 
 vaccinationRouter.use(
-    authMiddleware.requireAuthentication,
-    authMiddleware.loadUserFromToken
+  authMiddleware.requireAuthentication,
+  authMiddleware.loadUserFromToken,
 );
 
 vaccinationRouter.get("/", vaccinationController.getAll);

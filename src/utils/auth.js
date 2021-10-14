@@ -1,15 +1,21 @@
 const bcrypt = require("bcrypt");
 
 class Auth {
-    SALT_ROUNDS = 8;
+  SALT_ROUNDS = 8;
+  
+  constructor(crypt) {
+    this.crypt = crypt;
+  }
 
-    async hashPassword(password) {
-        return await bcrypt.hash(password, this.SALT_ROUNDS);
-    }
+  async hashPassword(password) {
+    const hash = await this.crypt.hash(password, this.SALT_ROUNDS);
+    return hash;
+  }
 
-    async comparePassword(plainTextPassword, hash) {
-        return await bcrypt.compare(plainTextPassword, hash);
-    }
+  async comparePassword(plainTextPassword, hash) {
+    const passwordMatches = await this.crypt.compare(plainTextPassword, hash);
+    return passwordMatches;
+  }
 }
 
-module.exports = new Auth();
+module.exports = new Auth(bcrypt);

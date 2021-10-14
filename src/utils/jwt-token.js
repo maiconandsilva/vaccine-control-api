@@ -1,32 +1,30 @@
-const {tokenSettings} = require("../config");
-const jwt = require("jsonwebtoken");
-const {validate} = require("./validation");
+const jsonwebtoken = require("jsonwebtoken");
+const { tokenSettings } = require("../config");
+const { validate } = require("./validation");
 
 class JwtToken {
-    constructor({privateKey, publicKey, tokenExpiration}) {
-        this.publicKey = publicKey;
-        this.privateKey = privateKey;
-        this.tokenExpiration = tokenExpiration;
-    }
+  constructor(tokenManager, { privateKey, publicKey, tokenExpiration }) {
+    this.tokenManager = tokenManager;
+    this.publicKey = publicKey;
+    this.privateKey = privateKey;
+    this.tokenExpiration = tokenExpiration;
+  }
 
-    async generate(data, options = {}) {
-        options = {
-            expiresIn: this.tokenExpiration,
-            ...options,
-        };
-        return jwt.sign(data, this.privateKey, options);
-    }
+  async generate(data, options = {}) {
+    const signOptions = { expiresIn: this.tokenExpiration, ...options };
+    return this.tokenManager.sign(data, this.privateKey, signOptions);
+  }
 
-    async validate(token) {
-        return jwt.verify(token, this.publicKey, function(err, decoded) {
-            validate(!err, "Couldn't decode token");
-            return decoded;
-        });
-    }
+  async validate(token) {
+    return this.tokenManager.verify(token, this.publicKey, (err, decoded) => {
+      validate(!err, "Couldn't decode token");
+      return decoded;
+    });
+  }
 
-    async decode(token){
-        return jwt.decode(token);
-    }
+  async decode(token) {
+    return this.tokenManager.decode(token);
+  }
 }
 
-module.exports = new JwtToken(tokenSettings);
+module.exports = new JwtToken(jsonwebtoken, tokenSettings);

@@ -1,16 +1,16 @@
 function validate(condition, message) {
-    if (!condition) {
-        throw new Error(message || "Validation failed");
-    }
+  if (!condition) {
+    throw new Error(message || "Validation failed");
+  }
 }
 
 function assert(condition, message) {
-    if (!condition) {
-        throw new Error(message);
-    }
+  if (!condition) {
+    throw new Error(message);
+  }
 }
 
 module.exports = {
-    validate,
-    assert,
+  validate,
+  assert,
 };
