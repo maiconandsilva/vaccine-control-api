@@ -13,13 +13,14 @@ class VaccineController extends Controller {
     const vaccine = await models.Vaccine.create(attrs, {
       fields: ["name", "manufacturer"],
     });
+    response.json({ vaccine });
   }
 
   async update(request, response) {
     const { id } = request.params;
     const { name, manufacturer } = request.body;
 
-    const vaccine = await models.Vaccine.findByPk(id);
+    const vaccine = id && await models.Vaccine.findByPk(id);
 
     validate(vaccine, "Couldn't find vaccine");
 
@@ -32,7 +33,7 @@ class VaccineController extends Controller {
 
   async delete(request, response) {
     const { id } = request.params;
-    const vaccine = id ? await models.Vaccine.findByPk(id) : null;
+    const vaccine = id && await models.Vaccine.findByPk(id);
     validate(vaccine, "Couldn't find vaccine");
     await vaccine.destroy();
   }

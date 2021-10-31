@@ -4,19 +4,21 @@ const { validate } = require("../utils/validation");
 
 class VaccinationController extends Controller {
   async getAll(request, response) {
-    const vaccinationRecord = await models.VaccinationRecord.findAll({
+    const vaccination = await models.VaccinationRecord.findAll({
       where: { userId: [response.locals.user.id] },
     });
 
-    validate(vaccinationRecord, "Couldn't find vaccination registry.");
-    response.json({ vaccinationRecord });
+    validate(vaccination, "Couldn't find vaccination registry.");
+    response.json({ vaccination });
   }
 
   async create(request, response) {
     const { lot, date, vaccineId } = request.body;
-    const user = await models.VaccinationRecord.create({
+    const vaccination = await models.VaccinationRecord.create({
       lot, date, vaccineId, userId: response.locals.user.id,
     });
+
+    response.json({ vaccination });
   }
 
   async update(request, response) {
@@ -29,9 +31,9 @@ class VaccinationController extends Controller {
 
     validate(vaccinationRecord, "Couldn't find vaccination log.");
 
-    if (lot) vaccinationRecord.lot = lot;
-    if (date) vaccinationRecord.date = date;
-    if (vaccineId) vaccinationRecord.vaccineId = vaccineId;
+    vaccinationRecord.lot = lot;
+    vaccinationRecord.date = date;
+    vaccinationRecord.vaccineId = vaccineId;
 
     await vaccinationRecord.save();
   }

@@ -4,6 +4,17 @@ const models = require("../models");
 const { validate } = require("../utils/validation");
 
 class AccountController extends Controller {
+  async getUser(request, response) {
+    const user = await response.locals.user;
+    const {
+      email, type, createdAt, updatedAt,
+    } = user;
+
+    response.json({
+      email, type, createdAt, updatedAt,
+    });
+  }
+
   async signup(request, response) {
     const { email, password } = request.body;
     const user = models.User.build({ email });
@@ -23,9 +34,18 @@ class AccountController extends Controller {
   }
 
   async update(request, response) {
-    const { email, password } = request.body;
-    if (email) response.locals.user.email = email;
-    if (password) await response.locals.user.setPassword(password);
+    // Do nothing
+  }
+
+  async updateEmail(request, response) {
+    const { email } = request.body;
+    response.locals.user.email = email;
+    await response.locals.user.save();
+  }
+
+  async updatePassword(request, response) {
+    const { password } = request.body;
+    await response.locals.user.setPassword(password);
     await response.locals.user.save();
   }
 }

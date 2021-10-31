@@ -8,7 +8,7 @@ class ControllerInterceptor {
     const { excludes, includes } = target;
 
     assert(!(excludes.length && includes.length),
-      "Cannot use both excludes and includes in controller");
+      "Cannot set both 'excludes' and 'includes' in controller");
 
     if (typeof interceptedProperty !== "function"
         || (excludes.length && excludes.indexOf(propertyName) > -1)
@@ -16,14 +16,13 @@ class ControllerInterceptor {
       return interceptedProperty;
     }
 
-    const self = this;
     return async (...args) => {
       const [request, response] = args;
       const transaction = await sequelize.transaction();
       // eslint-disable-next-line no-param-reassign
       target.transaction = transaction;
       try {
-        const result = await interceptedProperty.apply(self, args);
+        const result = await interceptedProperty.apply(target, args); // TODO
         response.end();
         await transaction.commit();
         return result;

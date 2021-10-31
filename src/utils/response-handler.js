@@ -10,13 +10,13 @@ class ResponseHandler {
     try {
       // Validation Error
       response.status(options.status).json({
-        error: error.errors.map((item) => item.message),
+        errors: error.errors.map((item) => item.message),
         type: options.jsonResponseType,
       });
     } catch (e) {
       // Generic Error
       response.status(options.status).json({
-        error: [error.message],
+        errors: [error.message],
         type: options.jsonResponseType,
       });
     }
